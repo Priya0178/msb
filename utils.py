@@ -49,6 +49,17 @@ class Poster(Document):
 
     class Meta:
         collection_name = COLLECTION_NAME_2
+async def total_users_count(self):
+        count = await self.col.count_documents({})
+        return count
+async def total_users_count():
+        count = await db.col.count_documents({})
+        return count
+async def total_chat_count():
+        count = await db.grp.count_documents({})
+        return count
+async def get_db_size(self):
+        return (await db.db.command("dbstats"))['dataSize']
 
 async def save_poster(imdb_id, title, year, url):
     try:

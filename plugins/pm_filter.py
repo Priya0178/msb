@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 import re
 import asyncio
 from pyrogram.errors import UserNotParticipant,FloodWait
-from utils import get_filter_results, get_file_details, is_subscribed, get_poster,add_req,Media,db
+from utils import get_filter_results, get_file_details, is_subscribed, get_poster,add_req,Media,total_users_count,total_chat_count,get_db_size
 BUTTONS = {}
 BOT = {}
 
@@ -17,10 +17,10 @@ async def delete_all_index_confirm(bot, message):
 @Client.on_message(filters.command('stats') & filters.user(ADMINS))
 async def get_ststs(bot, message):
     rju = await message.reply('Fetching stats....')
-    total_users = await db.total_users_count()
-    totl_chats = await db.total_chat_count()
+    total_users = await total_users_count()
+    totl_chats = await total_chat_count()
     files = await Media.count_documents()
-    size = await db.get_db_size()
+    size = await get_db_size()
     free = 536870912 - size
     size = get_size(size)
     free = get_size(free)

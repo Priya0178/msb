@@ -24,9 +24,7 @@ async def filter(client, message):
         if not user:
             try:
                 invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL),creates_join_request=True)
-            except FloodWait as e:
-                asyncio.sleep(e.value)
-        await client.send_message(
+                await client.send_message(
                 chat_id=message.from_user.id,
                 text="**Please Join My Updates Channel to use this Bot!**",
                 reply_markup=InlineKeyboardMarkup(
@@ -38,6 +36,8 @@ async def filter(client, message):
                 ),
                 
             )
+            except FloodWait as e:
+                asyncio.sleep(e.value)
         return    
         
     if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):

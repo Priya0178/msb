@@ -163,10 +163,10 @@ async def get_file_details(query):
     return filedetails
     
 async def total_users_count():
-        count = await db.col.count_documents({})
+        count = await db.users.count_documents({})
         return count
 async def total_chat_count():
-        count = await db.grp.count_documents({})
+        count = await db.users.count_documents({})
         return count
 async def get_db_size():
         return (await db.command("dbstats"))['dataSize']

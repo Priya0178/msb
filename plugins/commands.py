@@ -95,7 +95,7 @@ async def start(bot, cmd):
         except Exception as err:
             await cmd.reply_text(f"Something went wrong!\n\n**Error:** `{err}`")
     elif len(cmd.command) > 1 and cmd.command[1] == 'subscribe':
-        invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))
+        invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL),creates_join_request=True)
         await bot.send_message(
             chat_id=cmd.from_user.id,
             text="**Please Join My Updates Channel to use this Bot!**",

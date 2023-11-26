@@ -38,7 +38,7 @@ async def filter(client, message):
                 ),
                 
             )
-            return
+        return    
         
     if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
         return

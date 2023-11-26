@@ -24,7 +24,7 @@ async def get_ststs(bot, message):
     free = 536870912 - size
     size = get_size(size)
     free = get_size(free)
-    await rju.edit(STATUS_TXT.format(files, total_users, totl_chats, size, free))
+    await rju.edit(STATUS_TEXT.format(files, total_users, totl_chats, size, free))
 
 
 @Client.on_message(filters.text & filters.private & filters.incoming & filters.user(AUTH_USERS) if AUTH_USERS else filters.text & filters.private & filters.incoming)

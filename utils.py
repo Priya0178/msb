@@ -49,14 +49,7 @@ class Poster(Document):
 
     class Meta:
         collection_name = COLLECTION_NAME_2
-async def total_users_count():
-        count = await db.col.count_documents({})
-        return count
-async def total_chat_count():
-        count = await db.grp.count_documents({})
-        return count
-async def get_db_size(self):
-        return (await db.db.command("dbstats"))['dataSize']
+
 
 async def save_poster(imdb_id, title, year, url):
     try:
@@ -168,7 +161,16 @@ async def get_file_details(query):
     cursor = Media.find(filter)
     filedetails = await cursor.to_list(length=1)
     return filedetails
-
+    
+async def total_users_count():
+        count = await db.col.count_documents({})
+        return count
+async def total_chat_count():
+        count = await db.grp.count_documents({})
+        return count
+async def get_db_size(self):
+        return (await db.db.command("dbstats"))['dataSize']
+    
 async def add_req( user_id, first_name, username, date):
         try:
             await db.req.insert_one({"_id": int(user_id),"user_id": int(user_id), "first_name": first_name, "username": username, "date": date})

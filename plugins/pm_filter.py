@@ -3,6 +3,7 @@ from info import AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, API_KEY, AUTH_GR
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery,ChatJoinRequest
 from pyrogram import Client, filters
 import re
+import asyncio
 from pyrogram.errors import UserNotParticipant,FloodWait
 from utils import get_filter_results, get_file_details, is_subscribed, get_poster,add_req,Media
 BUTTONS = {}

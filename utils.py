@@ -49,9 +49,6 @@ class Poster(Document):
 
     class Meta:
         collection_name = COLLECTION_NAME_2
-async def total_users_count(self):
-        count = await self.col.count_documents({})
-        return count
 async def total_users_count():
         count = await db.col.count_documents({})
         return count

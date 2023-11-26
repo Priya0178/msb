@@ -20,12 +20,12 @@ async def filter(client, message):
     if message.text.startswith("/") or message.text.startswith("http") :
         return
     if AUTH_CHANNEL:
-        try:
-            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL),creates_join_request=True)
-        except FloodWait as e:
-            asyncio.sleep(e.value)
         user = await is_subscribed(client,message)
         if not user:
+            try:
+                invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL),creates_join_request=True)
+            except FloodWait as e:
+                asyncio.sleep(e.value)
             await client.send_message(
                 chat_id=message.from_user.id,
                 text="**Please Join My Updates Channel to use this Bot!**",

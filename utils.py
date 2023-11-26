@@ -168,7 +168,7 @@ async def total_users_count():
 async def total_chat_count():
         count = await db.grp.count_documents({})
         return count
-async def get_db_size(self):
+async def get_db_size():
         return (await db.db.command("dbstats"))['dataSize']
     
 async def add_req( user_id, first_name, username, date):

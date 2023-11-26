@@ -7,7 +7,7 @@ id_pattern = re.compile(r'^.\d+$')
 SESSION = environ.get('SESSION', 'pimon')
 API_ID = "19397648"
 API_HASH = "ed2db4aa6ab5f67fde7b88b8f17e85d0"
-BOT_TOKEN = "6506492207:AAFVSTMnY9HRsNCzaXQ-1SCQ5CfkLmNlICw""
+BOT_TOKEN = "6506492207:AAFVSTMnY9HRsNCzaXQ-1SCQ5CfkLmNlICw"
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))

@@ -3,7 +3,7 @@ from info import AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, API_KEY, AUTH_GR
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery,ChatJoinRequest
 from pyrogram import Client, filters
 import re
-from pyrogram.errors import UserNotParticipant
+from pyrogram.errors import UserNotParticipant,FloodWait
 from utils import get_filter_results, get_file_details, is_subscribed, get_poster,add_req,Media
 BUTTONS = {}
 BOT = {}
@@ -19,7 +19,10 @@ async def filter(client, message):
     if message.text.startswith("/") or message.text.startswith("http") :
         return
     if AUTH_CHANNEL:
-        invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL),creates_join_request=True)
+        try:
+            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL),creates_join_request=True)
+        except FloodWait as e:
+            asyncio.sleep(e.value)
         user = await is_subscribed(client,message)
         if not user:
             await client.send_message(

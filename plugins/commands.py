@@ -110,7 +110,7 @@ async def start(bot, cmd):
     else:
         await cmd.reply_photo(
             caption=START_MSG,
-            photo ="https://graph.org/file/4badaa4cc6fea3ff47c22.jpg"
+            photo ="https://graph.org/file/4badaa4cc6fea3ff47c22.jpg",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
